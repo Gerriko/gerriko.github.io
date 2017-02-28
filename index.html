@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home Automation with Electric Imp</title>
+  	<meta name="robots" content="noodp"/>
+  	<meta name="description" content="A demo page using getbootstrap template" />
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Grovey_Slocks demo for Hackster.io</a>
+        </div>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Smart Control for BnB's</h1>
+      </div>
+    </div>
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-4">
+          <h2>Lights</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <div class="btn-group btn-group-lg" data-toggle="buttons" aria-label="...">
+            <label id="l1" class="btn btn-default">
+              <input type="radio" name="lights" autocomplete="off"> On
+            </label>
+            <label id="l2" class="btn btn-default">
+              <input type="radio" name="lights" autocomplete="off"> Off
+            </label>
+          </div>
+          <hr>
+          <p>server confirmed: <span id="light-confirm"></span></p>
+          <hr>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Dashboard:</h3>
+            </div>
+            <div class="panel-body">
+              <h4>Lux Level: <span id="light-resp"></span></h4>
+              <h4>Status: <span id="light-stat"></span></h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <h2>Heating</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <div class="btn-group btn-group-lg" data-toggle="buttons" aria-label="...">
+            <label id="h1" class="btn btn-default">
+              <input type="radio" name="heat" autocomplete="off"> On
+            </label>
+            <label id="h2" class="btn btn-default">
+              <input type="radio" name="heat" autocomplete="off"> Off
+            </label>
+          </div>
+          <hr>
+          <p>server confirmed: <span id="heat-confirm"></span></p>
+          <hr>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Dashboard:</h3>
+            </div>
+            <div class="panel-body">
+              <h4>Temperature: <span id="temp-resp"></span>&deg;C</h4>
+              <h4>Humidity: <span id="humid-resp"></span>%</h4>
+              <h4>Status: <span id="heat-stat"></span></h4>
+            </div>
+          </div>
+       </div>
+       <div class="col-md-4">
+          <h2>Alarm</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <div class="btn-group btn-group-lg" data-toggle="buttons" aria-label="...">
+            <label id="a1" class="btn btn-default">
+              <input type="radio" name="alarm" autocomplete="off"> On
+            </label>
+            <label id="a2" class="btn btn-default">
+              <input type="radio" name="alarm" autocomplete="off"> Off
+            </label>
+          </div>
+          <hr>
+          <p>server confirmed: <span id="alarm-confirm"></span></p>
+          <hr>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Dashboard:</h3>
+            </div>
+            <div class="panel-body">
+              <h4>Last Alarm: <span id="alarm-resp"></span></h4>
+              <h4>Location: <span id="alarm-locat"></span></h4>
+              <h4>Status: <span id="alarm-stat"></span></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+
+      <footer>
+        <p>&copy; 2016 Gerrikoio - MIT License: Free to use.</p>
+      </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  </body>
+</html>
