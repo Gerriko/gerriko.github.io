@@ -198,9 +198,6 @@ app1.controller('doorctrlr', ['$scope', '$http', '$location', function($scope, $
         $scope.doorUnlockmsg = "Waiting for unlock status";
         $scope.doorUnlocked = true;
         pollDoorOpen($scope.doorToken);
-        $scope.doorToken = "";
-        $scope.doorUnlocked = false;
-        $scope.pollDoor = false;
       },
       function errorCallback(resp1) {
 
@@ -288,6 +285,9 @@ app1.controller('doorctrlr', ['$scope', '$http', '$location', function($scope, $
             $scope.doorReady = false;
             $scope.newBooking = false;
             $scope.openBooking = false;
+            $scope.doorToken = "";
+            $scope.doorUnlocked = false;
+            $scope.pollDoor = false;
             console.log("door polling stopped");
           }
         },
