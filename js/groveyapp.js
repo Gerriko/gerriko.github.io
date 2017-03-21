@@ -88,6 +88,7 @@ app1.controller('doorctrlr', ['$scope', '$http', '$location', function($scope, $
   $scope.doorReady = false;
   $scope.doorToken = "";
   $scope.doorUnlocked = false;
+  $scope.doorUnlockmsg = "Waiting for unlock status";
 
   var key = "SXGWLZPDOKFIVUHJYTQBNMCAERxswgzldpkoifuvjhtybqmncrea";
   var WelcomeInstruction = "Please press the DOOR BUTTON then wait for instruction to gain access.";
@@ -274,8 +275,19 @@ app1.controller('doorctrlr', ['$scope', '$http', '$location', function($scope, $
     $http.get(Baseurl + '/' + doorToken)
         .then(function successCallback(resp1) {
           console.log(resp1.data);
-          var intTime = ((new Date).getTime() - startTime );
-          setTimeout(pollDoorOpen.bind(null,doorToken), intTime);
+          // Check response
+          if (resp1.data.length > 2) {
+            $scope.doorUnlockmsg = resp1.data.USRm;
+            if (resp1.data.USRr < 4) {
+              var intTime = ((new Date).getTime() - startTime );
+              setTimeout(pollDoorOpen.bind(null,doorToken), intTime);
+            }
+            else {
+              $scope.doorReady = false;
+              $scope.newBooking = false;
+              $scope.openBooking = false;
+            }
+          }
         },
         function errorCallback(resp1) {
           console.log(resp1);
