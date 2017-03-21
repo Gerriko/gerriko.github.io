@@ -199,6 +199,8 @@ app1.controller('doorctrlr', ['$scope', '$http', '$location', function($scope, $
         $scope.doorUnlocked = true;
         pollDoorOpen($scope.doorToken);
         $scope.doorToken = "";
+        $scope.doorUnlocked = false;
+        $scope.pollDoor = false;
       },
       function errorCallback(resp1) {
 
