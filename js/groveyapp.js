@@ -195,9 +195,10 @@ app1.controller('doorctrlr', ['$scope', '$http', '$location', function($scope, $
     })
     .then(function successCallback(resp1) {
         console.log(resp1.data);
+        $scope.doorUnlockmsg = "Waiting for unlock status";
+        $scope.doorUnlocked = true;
         pollDoorOpen($scope.doorToken);
         $scope.doorToken = "";
-        $scope.doorUnlocked = true;
       },
       function errorCallback(resp1) {
 
@@ -276,17 +277,16 @@ app1.controller('doorctrlr', ['$scope', '$http', '$location', function($scope, $
         .then(function successCallback(resp1) {
           console.log(resp1.data);
           // Check response
-          if (resp1.data.length > 2) {
-            $scope.doorUnlockmsg = resp1.data.USRm;
-            if (resp1.data.USRr < 4) {
-              var intTime = ((new Date).getTime() - startTime );
-              setTimeout(pollDoorOpen.bind(null,doorToken), intTime);
-            }
-            else {
-              $scope.doorReady = false;
-              $scope.newBooking = false;
-              $scope.openBooking = false;
-            }
+          $scope.doorUnlockmsg = resp1.data.USRm;
+          if (resp1.data.USRr < 4) {
+            var intTime = ((new Date).getTime() - startTime );
+            setTimeout(pollDoorOpen.bind(null,doorToken), intTime);
+          }
+          else {
+            $scope.doorReady = false;
+            $scope.newBooking = false;
+            $scope.openBooking = false;
+            console.log("door polling stopped");
           }
         },
         function errorCallback(resp1) {
