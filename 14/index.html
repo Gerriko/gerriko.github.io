@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Element14 PSoC6 BLE Pioneer Kit Road Test Demo</title>
+  	<meta name="robots" content="noodp"/>
+  	<meta name="description" content="A smart chair headrest demo :: Powered by Cypress PSoC 6 BLE Pioneer Kit" />
+  	<meta name="keywords" content="Internet of Things, IoT, Beacons, PSoC 6, Road Test, Smart Chair" />
+  	<meta name="author" content="Gerrikoio" />
+
+    <meta property="og:locale" content="en_GB" />
+  	<meta property="og:type" content="website" />
+  	<meta property="og:title" content=">Element14 PSoC6 BLE Pioneer Kit Road Test Demo"/>
+  	<meta property="og:description" content="A smart audio chair demo :: Powered by Cypress PSoC 6 BLE Pioneer Kit"/>
+  	<meta property="og:image" content=""/>
+  	<meta property="og:url" content="https://lingertech.info/14"/>
+  	<meta property="og:site_name" content="Grovey_Slocks"/>
+  	<meta name="twitter:title" content="Element14 PSoC6 BLE Pioneer Kit Road Test Demo" />
+  	<meta name="twitter:image" content="" />
+  	<meta name="twitter:url" content="https://lingertech.info/14" />
+  	<meta name="twitter:card" content="summary" />
+
+  	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  	<link rel="shortcut icon" href="../img/icon/favicon.ico">
+  	<link rel="apple-touch-icon" sizes="57x57" href="../img/icon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="../img/icon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../img/icon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="../img/icon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../img/icon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../img/icon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="../img/icon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../img/icon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../img/icon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../img/icon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="../img/icon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../img/icon/favicon-16x16.png">
+    <link rel="manifest" href="../img/icon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="../img/icon/ms-icon-144x144.png">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="../css/style14.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+  <body>
+    <!-- Navigation -->
+    <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
+    <nav id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+            <li class="sidebar-brand">
+                <a href="#top" onclick=$("#menu-close").click();>Chair_14</a>
+            </li>
+            <li>
+                <a href="#top" onclick=$("#menu-close").click();>Home</a>
+            </li>
+            <li>
+                <a href="#about" onclick=$("#menu-close").click();>Download</a>
+            </li>
+            <li>
+                <a href="#services" onclick=$("#menu-close").click();>Services</a>
+            </li>
+            <li>
+                <a href="#contact" onclick=$("#menu-close").click();>Contact</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header id="top" class="header14">
+        <div class="text-vertical-center">
+            <h1>Element14 Road Test</h1>
+            <h3>Cypress PSoC 6 BLE Pioneer Kit</h3>
+            <h3>A <strong>SMART</strong> audio chair POC demo</h3>
+            <br>
+            <a href="#about" class="btn btn-danger btn-lg">Download App Now</a>
+        </div>
+    </header>
+
+    <!-- About -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p class="lead">If you have just sat down, welcome to your personal smart audio chair!</p>
+                    <p>With the smart audio chair, you can sit back and relax while listening to great music of your choice.</p>
+                    <hr>
+                    <p class="lead">If you haven't done so already, please download the app from the app store.</p>
+                    <p>Then follow the instructions provided.</p>
+                    <hr>
+                    <div class="col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+                      <div class="row">
+                        <div class="col-xs-10 col-xs-offset-1 col-sm-3">
+                          <a href="#!"><img src="..\img\apstor1.png" class="img-responsive" alt=""></a>
+                        </div>
+                        <div class="col-xs-10 col-xs-offset-1 col-sm-3">
+                          <a href="#!"><img src="..\img\apstor2.png" class="img-responsive" alt=""></a>
+                        </div>
+                        <div class="col-xs-10 col-xs-offset-1 col-sm-3">
+                          <a href="#!"><img src="..\img\apstor3.png" class="img-responsive" alt=""></a>
+                        </div>
+                      </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+    <!-- Services -->
+    <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
+    <section id="services" class="services bg-primary">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <h2>Smartchair Services</h2>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <a href="#!"><i class="fa fa-cloud fa-stack-1x text-primary"></i></a>
+                                </span>
+                                <h4><strong>Cleaning</strong></h4>
+                                <p>Something spilled. We can help.</p>
+                                <a href="#!" class="btn btn-light">Request</a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <a href="#!"><i class="fa fa-compass fa-stack-1x text-primary"></i></a>
+                              </span>
+                                <h4><strong>FoodnDrinks</strong></h4>
+                                <p>Feeling hungry/thirsty. We can help.</p>
+                                <a href="#!" class="btn btn-light">Request</a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <a href="#!"><i class="fa fa-flask fa-stack-1x text-primary"></i></a>
+                                </span>
+                                <h4><strong>Chat_Now</strong></h4>
+                                <p>Want to ask us something</p>
+                                <a href="#!" class="btn btn-light">Request</a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <a href="#!"><i class="fa fa-shield fa-stack-1x text-primary"></i></a>
+                                </span>
+                                <h4><strong>Leaving</strong></h4>
+                                <p>Hope your seat was comfortable. </p>
+                                <a href="#!" class="btn btn-light">Request</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.col-lg-10 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                    <h4><strong>Smart Audio Chair POC</strong></h4>
+                    <p>3481 High Chair<br>Beverly Hills, CA 90210</p>
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-phone fa-fw"></i> (123) 456-7890</li>
+                        <li><i class="fa fa-envelope-o fa-fw"></i> <a href="mailto:name@example.com">name@example.com</a>
+                        </li>
+                    </ul>
+                    <br>
+                    <ul class="list-inline">
+                        <li>
+                            <a href="#!"><i class="fa fa-facebook fa-fw fa-3x"></i></a>
+                        </li>
+                        <li>
+                            <a href="#!"><i class="fa fa-twitter fa-fw fa-3x"></i></a>
+                        </li>
+                        <li>
+                            <a href="#!"><i class="fa fa-dribbble fa-fw fa-3x"></i></a>
+                        </li>
+                    </ul>
+                    <hr class="small">
+                    <p class="text-muted">Copyright &copy; Gerrikoio 2018</p>
+                </div>
+            </div>
+        </div>
+        <a id="to-top" href="#top" class="btn btn-dark btn-lg"><i class="fa fa-chevron-up fa-fw fa-1x"></i></a>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="../js/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+
+    <script src="../js/groveyapp.js"></script>
+
+  </body>
+</html>
