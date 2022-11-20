@@ -106,24 +106,28 @@
         <a class="btn btn-lg btn-outline-light" id="arrivals" onClick="startScanning()">Where's my bus?</a>
       </div>
       <div class="bg-light shadow-sm mx-auto" style="width: 90%; height: auto; border-radius: 21px 21px 0 0;">
-        <div class="card" style="width: 100%;">
-          <div class="card-body">
-            <div class="row">
-            <div class="col-2 col-md">
-              <img src="bus-stop.svg" style="height: auto; width: 25%;" class="card-img-top" alt="...">
-            </div>
-            <div class="col-2 col-md">
-              <h3>Live Output</h3>
-              <div id="output" class="output">
-                <div id="content">{{ include.initial_output_content }}</div>
-                <div id="status"></div>
-                <pre id="log"></pre>
+        <div class="row align-items-start">
+          <div class="col col-md-3">
+            <img src="bus-stop.svg" style="padding-top: 10%; height: auto; width: 50%;" class="card-img-body" alt="...">
+          </div>
+          <div class="col col-md-9">
+            <div class="card" style="width: 100%;">
+              <div class="card-body text-dark text-start">
+                <h5 class="card-title">Live Output:</h5>
+                <div id="output" class="output">
+                  <p class="card-text">
+                  <div id="content"></div>
+                  <div id="status"></div>
+                  <pre id="log"></pre>
+                  </p>
+                </div>
+               
+                <div id="arrivals_canvas"></div>
+                <a href="#" class="btn btn-outline-secondary">Go somewhere else...</a>
               </div>
-              <a href="#" class="btn btn-outline-secondary">Go somewhere else...</a>
-            </div>
             </div>
           </div>
-        </div>        
+        </div>   
       </div>
     </div>
     <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
