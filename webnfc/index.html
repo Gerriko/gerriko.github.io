@@ -9,6 +9,7 @@
     <meta name="generator" content="Hugo 0.104.2">
     <meta name="robots" content="noodp"/>
     <title>Super Bus (NFC Web Demo)</title>
+
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/product/">
 
      <!-- CSS only -->
@@ -72,33 +73,34 @@
     <link href="product.css" rel="stylesheet">
   </head>
   <body>
-    
-<header class="site-header sticky-top py-1">
-  <nav class="container d-flex flex-column flex-md-row justify-content-between">
-    <a class="py-2" href="#" aria-label="Product">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img" viewBox="0 0 24 24"><title>Super Bus</title><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/></svg>
-    </a>
-    <a class="py-2 d-none d-md-inline-block" href="#">Fares and Tickets</a>
-    <a class="py-2 d-none d-md-inline-block" href="#">Routes and Timetables</a>
-    <a class="py-2 d-none d-md-inline-block" href="#">About Us</a>
-    <a class="py-2 d-none d-md-inline-block" href="#">News Centre</a>
-    <a class="py-2 d-none d-md-inline-block" href="#">Contact Us</a>
-  </nav>
-</header>
+    <header class="site-header sticky-top py-1">
+      <nav class="container d-flex flex-column flex-md-row justify-content-between">
+        <a class="py-2" href="#" aria-label="Product">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img" viewBox="0 0 24 24"><title>Super Bus</title><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/></svg>
+        </a>
+        <a class="py-2 d-none d-md-inline-block" href="#">Fares and Tickets</a>
+        <a class="py-2 d-none d-md-inline-block" href="#">Routes and Timetables</a>
+        <a class="py-2 d-none d-md-inline-block" href="#">About Us</a>
+        <a class="py-2 d-none d-md-inline-block" href="#">News Centre</a>
+        <a class="py-2 d-none d-md-inline-block" href="#">Contact Us</a>
+      </nav>
+    </header>
 
-<main>
+  <main>
   <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
     <div class="col-md-5 p-lg-5 mx-auto my-5">
       <h1 class="display-4 fw-normal">It's Super Bus!</h1>
       <p class="lead fw-normal">Offering you a frequent reliable service and super comfy seats for your posterior.</p>
       <a class="btn btn-light" href="#">Just wait for it...</a>
     </div>
-    <div class="product-device shadow-sm d-none d-md-block"></div>
-    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+    <div class="product-device shadow-sm d-none d-lg-block"></div>
+    <div class="product-device product-device-2 shadow-sm d-none d-lg-block"></div>
   </div>
 
   <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
     <div class="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+      <p id="nfc-error" class="d-none lead">Web NFC is not available. Use Chrome on Android.</p>
+      <div id="nfc-pass" class="d-none">
       <div class="my-3 py-3">
         <h2 class="display-5">RTPI</h2>
         <p class="lead">Real Time Passenger Information.</p>
@@ -110,23 +112,17 @@
             <img src="bus-stop.svg" style="padding-top: 10%; height: auto; width: 50%;" class="card-img-body" alt="...">
           </div>
           <div class="col col-md-9">
+            <div id="arrivals_canvas"></div>
             <div class="card" style="width: 100%;">
               <div class="card-body text-dark text-start">
-                <h5 class="card-title">Live Output:</h5>
-                <div id="output" class="output">
-                  <p class="card-text">
-                  <div id="content"></div>
-                  <div id="status"></div>
-                  <pre id="log"></pre>
-                  </p>
-                </div>
-               
-                <div id="arrivals_canvas"></div>
+                <h5 class="card-title">Updates:</h5>
+                <p class="card-text"></p>
                 <a href="#" class="btn btn-outline-secondary">Go somewhere else...</a>
               </div>
             </div>
           </div>
         </div>   
+      </div>
       </div>
     </div>
     <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
@@ -139,41 +135,49 @@
       </div>
     </div>
   </div>
+  </main>
 
-
-</main>
-
-<footer class="container py-5">
-  <div class="row">
-    <div class="col-12 col-md">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img" viewBox="0 0 24 24"><title>Product</title><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/></svg>
-      <small class="d-block mb-3 text-muted">&copy; Gerrikoio 2022</small>
+  <footer class="container py-5">
+    <div class="row">
+      <div class="col-12 col-md">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img" viewBox="0 0 24 24"><title>Product</title><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/></svg>
+        <small class="d-block mb-3 text-muted">&copy; Gerrikoio 2022</small>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Features</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="link-secondary" href="#">Cool stuff</a></li>
+          <li><a class="link-secondary" href="#">Random feature</a></li>
+          <li><a class="link-secondary" href="#">Team feature</a></li>
+          <li><a class="link-secondary" href="#">Stuff for developers</a></li>
+          <li><a class="link-secondary" href="#">Another one</a></li>
+          <li><a class="link-secondary" href="#">Last time</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>About</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="link-secondary" href="#">Team</a></li>
+          <li><a class="link-secondary" href="#">Locations</a></li>
+          <li><a class="link-secondary" href="#">Privacy</a></li>
+          <li><a class="link-secondary" href="#">Terms</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="col-6 col-md">
-      <h5>Features</h5>
-      <ul class="list-unstyled text-small">
-        <li><a class="link-secondary" href="#">Cool stuff</a></li>
-        <li><a class="link-secondary" href="#">Random feature</a></li>
-        <li><a class="link-secondary" href="#">Team feature</a></li>
-        <li><a class="link-secondary" href="#">Stuff for developers</a></li>
-        <li><a class="link-secondary" href="#">Another one</a></li>
-        <li><a class="link-secondary" href="#">Last time</a></li>
-      </ul>
-    </div>
-    <div class="col-6 col-md">
-      <h5>About</h5>
-      <ul class="list-unstyled text-small">
-        <li><a class="link-secondary" href="#">Team</a></li>
-        <li><a class="link-secondary" href="#">Locations</a></li>
-        <li><a class="link-secondary" href="#">Privacy</a></li>
-        <li><a class="link-secondary" href="#">Terms</a></li>
-      </ul>
-    </div>
-  </div>
-</footer>
-
-
+  </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+
+    <script>
+      $(document).ready(function() {
+        if (!("NDEFReader" in window)) {
+            $('#nfc-error').hide().removeClass('d-none').fadeIn();
+        }
+        else {
+          $('#nfc-pass').hide().removeClass('d-none').fadeIn();
+        }
+      });
+    </script>
     <script src="arrivals.js"></script>
       
   </body>
