@@ -4,17 +4,17 @@ async function startScanning() {
   try {
     const ndef = new NDEFReader();
     await ndef.scan();
-    arrivals_data.text("> Scan started.");
+    $('#arrivals_data').text("> Scan started.");
 
     ndef.addEventListener("readingerror", () => {
-      arrivals_data.text("Argh! Cannot read data from the NFC tag. Try another one?");
+      $('#arrivals_data').text("Argh! Cannot read data from the NFC tag. Try another one?");
     });
 
     ndef.addEventListener("reading", ({ message, serialNumber }) => {
-      arrivals_data.append(`> Serial Number: ${serialNumber}`);
-      arrivals_data.append(`> Records: (${message.records.length})`);
+      $('#arrivals_data').append(`> Serial Number: ${serialNumber}`);
+      $('#arrivals_data').append(`> Records: (${message.records.length})`);
     });
   } catch (error) {
-    arrivals_data.text("Argh! " + error);
+    $('#arrivals_data').text("Argh! " + error);
   }
 }
