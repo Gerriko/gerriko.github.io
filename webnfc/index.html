@@ -104,19 +104,18 @@
       <div class="my-3 py-3">
         <h2 class="display-5">RTPI</h2>
         <p class="lead">Real Time Passenger Information.</p>
-        <a class="btn btn-lg btn-outline-light" id="arrivals" onClick="startScanning()">Where's my bus?</a>
+        <a class="btn btn-lg btn-outline-light" onClick="startScanning()">Where's my bus?</a>
       </div>
-      <div class="bg-light shadow-sm mx-auto" style="width: 90%; height: auto; border-radius: 21px 21px 0 0;">
+      <div id="arrivals_canvas" class="d-none bg-light shadow-sm mx-auto" style="width: 90%; height: auto; border-radius: 21px 21px 0 0;">
         <div class="row align-items-start">
           <div class="col col-md-3">
             <img src="bus-stop.svg" style="padding-top: 10%; height: auto; width: 50%;" class="card-img-body" alt="...">
           </div>
           <div class="col col-md-9">
-            <div id="arrivals_canvas"></div>
             <div class="card" style="width: 100%;">
               <div class="card-body text-dark text-start">
                 <h5 class="card-title">Updates:</h5>
-                <p class="card-text"></p>
+                <p id="arrivals_data" class="card-text"></p>
                 <a href="#" class="btn btn-outline-secondary">Go somewhere else...</a>
               </div>
             </div>
