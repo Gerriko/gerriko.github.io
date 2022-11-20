@@ -1,21 +1,20 @@
 
 async function startScanning() {
+  $('#arrivals_canvas').hide().removeClass('d-none').fadeIn();
   try {
-    const nfcPermissionStatus = await navigator.permissions.query({ name: "nfc" });
-    if (nfcPermissionStatus.state === "granted") {
-      const ndef = new NDEFReader();
-      await ndef.scan();
-      console.log("> NFC Scan started");
-      ndef.addEventListener("readingerror", () => {
-        console.log("Argh! Cannot read data from the NFC tag. Try another one?");
-      });
+    const ndef = new NDEFReader();
+    await ndef.scan();
+    arrivals_data.text("> Scan started");
 
-      ndef.addEventListener("reading", ({ message, serialNumber }) => {
-        console.log(`> Serial Number: ${serialNumber}`);
-        console.log(`> Records: (${message.records.length})`);
-      });
-    }
+    ndef.addEventListener("readingerror", () => {
+      log("Argh! Cannot read data from the NFC tag. Try another one?");
+    });
+
+    ndef.addEventListener("reading", ({ message, serialNumber }) => {
+      log(`> Serial Number: ${serialNumber}`);
+      log(`> Records: (${message.records.length})`);
+    });
   } catch (error) {
-    console.log("Argh! " + error);
+    log("Argh! " + error);
   }
 }
