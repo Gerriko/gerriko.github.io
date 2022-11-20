@@ -26,7 +26,6 @@ var OutputHelper = {
 
 if (!("NDEFReader" in window))
   OutputHelper.setStatus("Web NFC is not available. Use Chrome on Android.");
-</script>
 
 async function startScanning() {
   log = OutputHelper.log;
