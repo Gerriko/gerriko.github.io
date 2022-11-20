@@ -1,4 +1,4 @@
-log = OutputHelper.log;
+var log = OutputHelper.log;
 
 var OutputHelper = {
   log: function() {
