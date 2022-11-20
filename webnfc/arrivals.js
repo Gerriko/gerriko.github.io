@@ -24,29 +24,29 @@ var OutputHelper = {
   }
 };
 
-log = OutputHelper.log;
-
 if (!("NDEFReader" in window))
   OutputHelper.setStatus("Web NFC is not available. Use Chrome on Android.");
 </script>
 
 async function startScanning() {
+  log = OutputHelper.log;
+
   try {
     const nfcPermissionStatus = await navigator.permissions.query({ name: "nfc" });
     if (nfcPermissionStatus.state === "granted") {
       const ndef = new NDEFReader();
       await ndef.scan();
-      console.log("> NFC Scan started");
+      log("> NFC Scan started");
       ndef.addEventListener("readingerror", () => {
-        console.log("Argh! Cannot read data from the NFC tag. Try another one?");
+        log("Argh! Cannot read data from the NFC tag. Try another one?");
       });
 
       ndef.addEventListener("reading", ({ message, serialNumber }) => {
-        console.log(`> Serial Number: ${serialNumber}`);
-        console.log(`> Records: (${message.records.length})`);
+        log(`> Serial Number: ${serialNumber}`);
+        log(`> Records: (${message.records.length})`);
       });
     }
   } catch (error) {
-    console.log("Argh! " + error);
+    log("Argh! " + error);
   }
 }
