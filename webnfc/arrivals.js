@@ -1,3 +1,5 @@
+log = OutputHelper.log;
+
 var OutputHelper = {
   log: function() {
     var line = Array.prototype.slice.call(arguments).map(function(argument) {
@@ -28,7 +30,6 @@ if (!("NDEFReader" in window))
   OutputHelper.setStatus("Web NFC is not available. Use Chrome on Android.");
 
 async function startScanning() {
-  log = OutputHelper.log;
 
   try {
     const nfcPermissionStatus = await navigator.permissions.query({ name: "nfc" });
