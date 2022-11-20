@@ -107,16 +107,18 @@
       </div>
       <div class="bg-light shadow-sm mx-auto" style="width: 90%; height: auto; border-radius: 21px 21px 0 0;">
         <div class="card" style="width: 100%;">
-          <img src="bus-stop.svg" style="height: auto; width: 25%;" class="card-img-top" alt="...">
           <div class="card-body">
             <div class="col-2 col-md">
-            <h3>Live Output</h3>
-            <div id="output" class="output">
-              <div id="content">{{ include.initial_output_content }}</div>
-              <div id="status"></div>
-              <pre id="log"></pre>
+              <img src="bus-stop.svg" style="height: auto; width: 25%;" class="card-img-top" alt="...">
             </div>
-            <a href="#" class="btn btn-outline-secondary">Go somewhere else...</a>
+            <div class="col-2 col-md">
+              <h3>Live Output</h3>
+              <div id="output" class="output">
+                <div id="content">{{ include.initial_output_content }}</div>
+                <div id="status"></div>
+                <pre id="log"></pre>
+              </div>
+              <a href="#" class="btn btn-outline-secondary">Go somewhere else...</a>
             </div>
           </div>
         </div>        
