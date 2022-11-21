@@ -53,6 +53,7 @@ async function startScanning() {
 
 async function stopScan() {
   await AbortCtrlr.abort();
+  $('#arrivals_data').text("");
   $('#get_btn').hide().addClass('d-none');
   $('#stop_btn').hide().addClass('d-none');
   $('#arrivals_canvas').addClass('d-none').fadeOut();
