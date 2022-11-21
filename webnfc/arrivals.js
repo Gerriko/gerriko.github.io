@@ -1,9 +1,10 @@
+const ctrl = new AbortController();
 
 async function startScanning() {
   $('#arrivals_canvas').hide().removeClass('d-none').fadeIn();
   try {
     const ndef = new NDEFReader();
-    await ndef.scan();
+    await ndef.scan({ signal: ctlr.signal);
     $('#scan_btn').text("NFC Scan Active...");
     $('#scan_btn').removeClass('btn-outline-light');
     $('#scan_btn').addClass('btn-success disabled');
@@ -48,12 +49,17 @@ async function startScanning() {
 }
 
 async function stopScan() {
-  const ctrl = new AbortController();
   ctrl.abort();
+}
+
+ctrl.signal.onabort = event => {
+  // All NFC operations have been aborted.
   $('#get_btn').hide().addClass('d-none');
   $('#stop_btn').hide().addClass('d-none');
   $('#arrivals_canvas').addClass('d-none').fadeOut();
   $('#scan_btn').removeClass('btn-success disabled');
   $('#scan_btn').addClass('btn-outline-light');
   $('#scan_btn').text("Where's my bus?");
-}
+};
+
+
