@@ -1,10 +1,13 @@
-var ndef = new NDEFReader();
-var ctrl = new AbortController();
+let ndef;
+let AbortCtrlr;
 
 async function startScanning() {
   $('#arrivals_canvas').hide().removeClass('d-none').fadeIn();
   try {
-    await ndef.scan({ ctlr.signal });
+    ndef = new NDEFReader();
+    AbortCtrlr = new AbortController();
+    const signal = AbortCtrlr.signal;
+    await ndef.scan({ signal });
     $('#scan_btn').text("NFC Scan Active...");
     $('#scan_btn').removeClass('btn-outline-light');
     $('#scan_btn').addClass('btn-success disabled');
@@ -49,10 +52,10 @@ async function startScanning() {
 }
 
 async function stopScan() {
-  ctrl.abort();
+  AbortCtrlr.abort();
 }
 
-ctrl.signal.onabort = event => {
+AbortCtrlr.signal.onabort = event => {
   // All NFC operations have been aborted.
   $('#get_btn').hide().addClass('d-none');
   $('#stop_btn').hide().addClass('d-none');
