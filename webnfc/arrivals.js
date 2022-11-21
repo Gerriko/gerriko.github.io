@@ -6,7 +6,7 @@ async function startScanning() {
     await ndef.scan();
     $('#scan_btn').text("NFC Scan Active...");
     $('#scan_btn').removeClass('btn-outline-light');
-    $('#scan_btn').addClass('btn-success');
+    $('#scan_btn').addClass('btn-success disabled');
 
     ndef.addEventListener("readingerror", () => {
       $('#arrivals_data').text("Argh! Cannot read data from the NFC tag. Try another one?");
