@@ -23,6 +23,8 @@ async function startScanning() {
           $('#arrivals_data').append(`<br/>NDEF Data: (${decoder.decode(record.data)})`);
           switch (record.recordType) {
             case "text":
+              const textDecoder = new TextDecoder(record.encoding);
+              $('#arrivals_data').append(`<br/>Text: ${textDecoder.decode(record.data)} (${record.lang})`);
               $('#get_btn').hide().addClass('d-none');
               break;
             case "url":
@@ -43,4 +45,15 @@ async function startScanning() {
   } catch (error) {
     $('#arrivals_data').text("Argh! " + error);
   }
+}
+
+async function stopScan() {
+  const ctrl = new AbortController();
+  ctrl.abort();
+  $('#get_btn').hide().addClass('d-none');
+  $('#stop_btn').hide().addClass('d-none');
+  $('#arrivals_canvas').addClass('d-none').fadeOut();
+  $('#scan_btn').removeClass('btn-success disabled');
+  $('#scan_btn').addClass('btn-outline-light');
+  $('#scan_btn').text("Where's my bus?");
 }
