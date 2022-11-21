@@ -4,7 +4,7 @@ var ctrl = new AbortController();
 async function startScanning() {
   $('#arrivals_canvas').hide().removeClass('d-none').fadeIn();
   try {
-    await ndef.scan({ signal: ctlr.signal });
+    await ndef.scan({ ctlr.signal });
     $('#scan_btn').text("NFC Scan Active...");
     $('#scan_btn').removeClass('btn-outline-light');
     $('#scan_btn').addClass('btn-success disabled');
