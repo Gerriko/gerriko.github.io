@@ -1,3 +1,6 @@
+var ndef = new NDEFReader();
+var ctrl = new AbortController();
+
 async function startScanning() {
   $('#arrivals_canvas').hide().removeClass('d-none').fadeIn();
   try {
