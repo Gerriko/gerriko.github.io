@@ -52,17 +52,14 @@ async function startScanning() {
 }
 
 async function stopScan() {
-  AbortCtrlr.abort();
-}
-
-AbortCtrlr.signal.onabort = event => {
-  // All NFC operations have been aborted.
+  await AbortCtrlr.abort();
   $('#get_btn').hide().addClass('d-none');
   $('#stop_btn').hide().addClass('d-none');
   $('#arrivals_canvas').addClass('d-none').fadeOut();
   $('#scan_btn').removeClass('btn-success disabled');
   $('#scan_btn').addClass('btn-outline-light');
   $('#scan_btn').text("Where's my bus?");
-};
+  
+}
 
 
