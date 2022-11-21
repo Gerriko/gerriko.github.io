@@ -13,14 +13,14 @@ async function startScanning() {
     });
 
     ndef.addEventListener("reading", ({ message, serialNumber }) => {
-      $('#arrivals_data').append(`> Serial Number: ${serialNumber}`);
-      $('#arrivals_data').append(`> Records: (${message.records.length})`);
+      $('#arrivals_data').append(`Tag Serial Number: ${serialNumber}`);
+      $('#arrivals_data').append(`<br/>NDEF Records: (${message.records.length})`);
       
       if (message.records.length > 0 && message.records[0].recordType != "empty") {
         const decoder = new TextDecoder();
         for (const record of message.records) {
-          $('#arrivals_data').append(`> Record Type: (${record.recordType})`);
-          $('#arrivals_data').append(`> Data: (${decoder.decode(record.data)})`);
+          $('#arrivals_data').append(`<br/>NDEF Record Type: (${record.recordType})`);
+          $('#arrivals_data').append(`<br/>NDEF Data: (${decoder.decode(record.data)})`);
           switch (record.recordType) {
             case "text":
               break;
