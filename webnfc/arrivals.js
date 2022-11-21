@@ -29,10 +29,12 @@ async function startScanning() {
             case "mime":
               break;
             case "smart-poster":
+              $('#get_btn').hide().removeClass('d-none').fadeIn();
               break;
             default:
           }
         }
+        $('#stop_btn').hide().removeClass('d-none').fadeIn();
       }
     });
   } catch (error) {
