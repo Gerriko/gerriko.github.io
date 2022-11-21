@@ -86,53 +86,53 @@
       </nav>
     </header>
 
-  <main>
-  <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-    <div class="col-md-5 p-lg-5 mx-auto my-5">
-      <h1 class="display-4 fw-normal">It's Super Bus!</h1>
-      <p class="lead fw-normal">Offering you a frequent reliable service and super comfy seats for your posterior.</p>
-      <a class="btn btn-light" href="#">Just wait for it...</a>
-    </div>
-    <div class="product-device shadow-sm d-none d-lg-block"></div>
-    <div class="product-device product-device-2 shadow-sm d-none d-lg-block"></div>
-  </div>
-
-  <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-    <div class="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-      <p id="nfc-error" class="d-none lead">Web NFC is not available. Use Chrome on Android.</p>
-      <div id="nfc-pass" class="d-none">
-      <div class="my-3 py-3">
-        <img src="bus-stop.svg" style="height: 70%; width: auto;"alt="...">
-        <h2 class="display-5">RTPI</h2>
-        <p class="lead">Real Time Passenger Information.</p>
-        <a class="btn btn-lg btn-outline-light" onClick="startScanning()">Where's my bus?</a>
+    <main>
+      <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+        <div class="col-md-5 p-lg-5 mx-auto my-5">
+          <h1 class="display-4 fw-normal">It's Super Bus!</h1>
+          <p class="lead fw-normal">Offering you a frequent reliable service and super comfy seats for your posterior.</p>
+          <a class="btn btn-light" href="#">Just wait for it...</a>
+        </div>
+        <div class="product-device shadow-sm d-none d-lg-block"></div>
+        <div class="product-device product-device-2 shadow-sm d-none d-lg-block"></div>
       </div>
-      <div id="arrivals_canvas" class="d-none bg-light shadow-sm mx-auto" style="width: 90%; height: auto; border-radius: 21px 21px 0 0;">
-        <div class="row align-items-start">
-          <div class="col col-md-12">
-            <div class="card" style="width: 100%;">
-              <div class="card-body text-dark text-start">
-                <h5 class="card-title">Updates:</h5>
-                <p id="arrivals_data" class="card-text"></p>
-                <a href="#" class="btn btn-outline-secondary">Go somewhere else...</a>
-              </div>
+
+      <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+        <div class="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+          <p id="nfc-error" class="d-none lead">Web NFC is not available. Use Chrome on Android.</p>
+          <div id="nfc-pass" class="d-none">
+            <div class="my-3 py-3">
+              <img src="bus-stop.svg" style="height: 100%; width: auto;"alt="...">
+              <h2 class="display-5">RTPI</h2>
+              <p class="lead">Real Time Passenger Information.</p>
+              <a id="scan_btn" class="btn btn-lg btn-outline-light" onClick="startScanning()">Where's my bus?</a>
+            </div>
+            <div id="arrivals_canvas" class="d-none bg-light shadow-sm mx-auto" style="width: 90%; height: auto; border-radius: 21px 21px 0 0;">
+              <div class="row align-items-start">
+                <div class="col col-md-12">
+                  <div class="card" style="width: 100%;">
+                    <div class="card-body text-dark text-start">
+                      <h5 class="card-title">Updates:</h5>
+                      <p id="arrivals_data" class="card-text"></p>
+                      <a href="#" class="btn btn-outline-secondary">Go somewhere else...</a>
+                    </div>
+                  </div>
+                </div>
+              </div>   
             </div>
           </div>
-        </div>   
+        </div>
+        <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+          <div class="my-3 p-3">
+            <h2 class="display-5">Travel Updates</h2>
+            <p class="lead">Latest news about service.</p>
+            <a class="btn btn-lg btn-outline-dark" href="#">Subscribe to RSS</a>
+          </div>
+          <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: auto; border-radius: 21px 21px 0 0;">
+          </div>
+        </div>
       </div>
-      </div>
-    </div>
-    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-      <div class="my-3 p-3">
-        <h2 class="display-5">Travel Updates</h2>
-        <p class="lead">Latest news about service.</p>
-        <a class="btn btn-lg btn-outline-dark" href="#">Subscribe to RSS</a>
-      </div>
-      <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: auto; border-radius: 21px 21px 0 0;">
-      </div>
-    </div>
-  </div>
-  </main>
+    </main>
 
   <footer class="container py-5">
     <div class="row">
