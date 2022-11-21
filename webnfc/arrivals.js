@@ -13,7 +13,7 @@ async function startScanning() {
     });
 
     ndef.addEventListener("reading", ({ message, serialNumber }) => {
-      $('#arrivals_data').append(`Tag Serial Number: ${serialNumber}`);
+      $('#arrivals_data').text(`Tag Serial Number: ${serialNumber}`);
       $('#arrivals_data').append(`<br/>NDEF Records: (${message.records.length})`);
       
       if (message.records.length > 0 && message.records[0].recordType != "empty") {
