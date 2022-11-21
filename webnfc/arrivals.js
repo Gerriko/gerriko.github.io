@@ -13,8 +13,6 @@ async function startScanning() {
     });
 
     ndef.addEventListener("reading", ({ message, serialNumber }) => {
-      if ($('#get_btn').hasClass('d-none') == false) $('#get_btn').addClass('d-none');
-      if ($('#stop_btn').hasClass('d-none') == false) $('#stop_btn').addClass('d-none');
       $('#arrivals_data').text(`Tag Serial Number: ${serialNumber}`);
       $('#arrivals_data').append(`<br/>NDEF Records: (${message.records.length})`);
       
@@ -25,10 +23,13 @@ async function startScanning() {
           $('#arrivals_data').append(`<br/>NDEF Data: (${decoder.decode(record.data)})`);
           switch (record.recordType) {
             case "text":
+              $('#get_btn').hide().addClass('d-none');
               break;
             case "url":
+              $('#get_btn').hide().addClass('d-none');
               break;
             case "mime":
+              $('#get_btn').hide().addClass('d-none');
               break;
             case "smart-poster":
               $('#get_btn').hide().removeClass('d-none').fadeIn();
