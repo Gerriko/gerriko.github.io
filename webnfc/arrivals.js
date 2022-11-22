@@ -2,6 +2,8 @@ let ndef;
 let AbortCtrlr;
 let geoLoc = "";
 let placeID = "";
+let trainLink = "";
+let busLink = "";
 
 $(document).ready(function() {
   if (!("NDEFReader" in window)) {
@@ -9,8 +11,22 @@ $(document).ready(function() {
   }
   else {
     $('#nfc-pass').hide().removeClass('d-none').fadeIn();
+    try getFile();
+    catch (error) {
+      console.log("Argh fetch! " + error);
+    }
   }
 });
+
+async function getFile() {
+	let response = await fetch("googs.abc");
+	if(response.status != 200) {
+		throw new Error("Server Error");
+	}
+	// read response stream as text
+	let text_data = await response.text();
+  console.log(text_data);
+}
 
 
 async function startScanning() {
