@@ -12,7 +12,7 @@ async function startScanning() {
     await ndef.scan({ signal });
     $('#scan_btn').text("NFC Scan Active...");
     $('#scan_btn').removeClass('btn-outline-light');
-    $('#scan_btn').addClass('btn-success disabled');
+    $('#scan_btn').addClass('btn-warning disabled');
 
     ndef.addEventListener("readingerror", () => {
       $('#arrivals_data').text("Argh! Cannot read data from the NFC tag. Try another one?");
@@ -70,7 +70,7 @@ async function stopScan() {
   $('#get_btn').hide().addClass('d-none');
   $('#stop_btn').hide().addClass('d-none');
   $('#arrivals_canvas').addClass('d-none').fadeOut();
-  $('#scan_btn').removeClass('btn-success disabled');
+  $('#scan_btn').removeClass('btn-warning disabled');
   $('#scan_btn').addClass('btn-outline-light');
   $('#scan_btn').text("Where's my bus?");
   
