@@ -50,7 +50,7 @@ async function startScanning() {
                 if (sprecord.recordType == "url" && spData.includes("geo:53.")) {
                   const GEOlat = spData.indexOf("geo:")+4;
                   const GEOlong = spData.indexOf(",");
-                  geoLoc = "query="+spData.substring(GEOlat, GEOlong)+"%2C"+spData.substring(GEOlong);
+                  geoLoc = "query="+spData.substring(GEOlat, GEOlong)+"%2C"+spData.substring(GEOlong+1);
                   console.log("geoLoc: "+geoLoc);
                   URLfind = true;
                 }
