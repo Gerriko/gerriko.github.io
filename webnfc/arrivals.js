@@ -3,6 +3,16 @@ let AbortCtrlr;
 let geoLoc = "";
 let placeID = "";
 
+$(document).ready(function() {
+  if (!("NDEFReader" in window)) {
+    $('#nfc-error').hide().removeClass('d-none').fadeIn();
+  }
+  else {
+    $('#nfc-pass').hide().removeClass('d-none').fadeIn();
+  }
+});
+
+
 async function startScanning() {
   let URLfind;
   let TXTfind;
