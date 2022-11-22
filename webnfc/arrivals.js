@@ -5,7 +5,7 @@ async function startScanning() {
   let URLfind;
   let TXTfind;
   $('#arrivals_canvas').hide().removeClass('d-none').fadeIn();
-  $('html, body').animate({ scrollTop: $("#rtpi-header").offset().top }, 500);
+  $('html, body').animate({ scrollTop: $("#nfc-pass").offset().top }, 500);
   try {
     ndef = new NDEFReader();
     AbortCtrlr = new AbortController();
