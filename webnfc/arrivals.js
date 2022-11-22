@@ -5,7 +5,7 @@ let placeID = "";
 let trainLink = "";
 let busLink = "";
 
-$(document).ready(function() {
+$(document).ready(async function() {
   if (!("NDEFReader" in window)) {
     $('#nfc-error').hide().removeClass('d-none').fadeIn();
   }
