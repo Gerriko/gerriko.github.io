@@ -45,8 +45,8 @@ async function startScanning() {
               for (const sprecord of record.toRecords()) {
                 const spData = decoder.decode(sprecord.data);
                 $('#arrivals_data').append(`<br/>- SP Type: ${sprecord.recordType} | Data: ${spData}`);
-                if (sprecord.recordType == "url" && spData.includes("geo:53")) URLfind = true;
-                else if (sprecord.recordType == "text" && spData.includes("stop,")) TXTfind = true;
+                if (sprecord.recordType == "url" && spData.includes("geo:53.")) URLfind = true;
+                else if (sprecord.recordType == "text" && spData.includes(", stop")) TXTfind = true;
               }
               
               if (URLfind == true && TXTfind == true)
