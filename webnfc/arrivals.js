@@ -84,7 +84,7 @@ async function startScanning() {
                   const GEOlat = spData.indexOf("geo:")+4;
                   const GEOlong = spData.indexOf(",");
                   geoLoc = "query="+spData.substring(GEOlat, GEOlong)+"%2C"+spData.substring(GEOlong+1);
-                  console.log("geoLoc: "+geoLoc);
+                  //console.log("geoLoc: "+geoLoc);
                   URLfind = true;
                 }
                 else if (sprecord.recordType == "text") {
@@ -100,7 +100,7 @@ async function startScanning() {
                   if (spData.includes("ID: ")) {
                     const placeIDstart = spData.indexOf("ID: ")+4;
                     placeID = "query_place_id="+spData.substring(placeIDstart);
-                    console.log("placeID: "+placeID);
+                    //console.log("placeID: "+placeID);
                   }
                 }
               }
@@ -148,15 +148,16 @@ function getMapData() {
 }
 
 async function getTrainData() {
+	await AbortCtrlr.abort();
 	if (trainLink.length > 32 && stnName.length > 1) {
 		const trainULS = "https://script.google.com/macros/s/" + trainLink + "/exec?station=" + stnName;
-		$.get(trainULS, function(data, status) {
-			if(status != 200) {
-				console.log("Server Error");
-			}
-			else {
-				console.log("Train Data: " + data);
-			}
+    console.log(trainULS);
+		$.getJSON(trainULS, function(data, status) {
+      console.log("Status: " + status + " | Train Data: " + data);
+      var items = [];
+      $.each( data, function( key, val ) {
+        console.log("key:" + key + " | val:" + val);
+      }
 		});
 	}
 }
