@@ -5,6 +5,7 @@ async function startScanning() {
   let URLfind;
   let TXTfind;
   $('#arrivals_canvas').hide().removeClass('d-none').fadeIn();
+  $('html, body').animate({ scrollTop: $("#arrivals_canvas").offset().top }, 1000);
   try {
     ndef = new NDEFReader();
     AbortCtrlr = new AbortController();
