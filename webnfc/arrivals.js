@@ -151,13 +151,13 @@ async function getTrainData() {
 	await AbortCtrlr.abort();
 	if (trainLink.length > 32 && stnName.length > 1) {
 		const trainULS = "https://script.google.com/macros/s/" + trainLink + "/exec?station=" + stnName;
-    console.log(trainULS);
+		console.log(trainULS);
 		$.getJSON(trainULS, function(data, status) {
-      console.log("Status: " + status + " | Train Data: " + data);
-      var items = [];
-      $.each( data, function( key, val ) {
-        console.log("key:" + key + " | val:" + val);
-      }
+			console.log("Status: " + status + " | Train Data: " + data);
+			var items = [];
+			$.each( data, function( key, val ) {
+				console.log("key:" + key + " | val:" + val);
+			});
 		});
 	}
 }
