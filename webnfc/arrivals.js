@@ -38,6 +38,10 @@ async function startScanning() {
               $('#get_btn').hide().addClass('d-none');
               break;
             case "smart-poster":
+              for (const record of record.data.toRecords()) {
+                $('#arrivals_data').append(`<br/>Type: ${record.recordType})`);
+              }
+                
               $('#get_btn').hide().removeClass('d-none').fadeIn();
               break;
             default:
