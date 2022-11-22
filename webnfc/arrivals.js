@@ -1,5 +1,7 @@
 let ndef;
 let AbortCtrlr;
+let geoLoc = "";
+let placeID = "";
 
 async function startScanning() {
   let URLfind;
@@ -50,10 +52,14 @@ async function startScanning() {
                 else if (sprecord.recordType == "text" && spData.includes(", StationCode")) TXTfind = 2;
               }
               
-              if (URLfind == true && TXTfind == 1)
-                $('#bus_btn').hide().removeClass('d-none').fadeIn();                
-              if (URLfind == true && TXTfind == 2)
-                $('#train_btn').hide().removeClass('d-none').fadeIn();                
+              if (URLfind == true && TXTfind == 1) {
+                $('#bus_btn').hide().removeClass('d-none').fadeIn();
+                $('#map_btn').hide().removeClass('d-none').fadeIn();
+              }
+              if (URLfind == true && TXTfind == 2) {
+                $('#train_btn').hide().removeClass('d-none').fadeIn();
+                $('#map_btn').hide().removeClass('d-none').fadeIn();
+              }
                 
               break;
             default:
@@ -72,6 +78,7 @@ async function stopScan() {
   $('#arrivals_data').text("");
   $('#bus_btn').hide().addClass('d-none');
   $('#train_btn').hide().addClass('d-none');
+  $('#map_btn').hide().addClass('d-none');
   $('#stop_btn').hide().addClass('d-none');
   $('#arrivals_canvas').addClass('d-none').fadeOut();
   $('#scan_btn').removeClass('btn-warning disabled');
@@ -79,6 +86,13 @@ async function stopScan() {
   $('#scan_btn').text("Where's my bus?");
   $('html, body').animate({ scrollTop: $("#bus-header").offset().top }, 500);
   
+}
+
+function getMapData() {
+  if (geoLoc.length > 5 && placeID.length > 5) {
+    stopScan();
+    window.open('https://www.google.com/maps/search/?api=1&'+geoLoc+placeID);
+  }
 }
 
 
