@@ -39,7 +39,7 @@ async function startScanning() {
               break;
             case "smart-poster":
               for (const sprecord of record.toRecords()) {
-                $('#arrivals_data').append(`<br/>- SP Type: ${sprecord.recordType} | Data: ${sprecord.data}`);
+                $('#arrivals_data').append(`<br/>- SP Type: ${sprecord.recordType} | Data: ${decoder.decode(sprecord.data)}`);
               }
                 
               $('#get_btn').hide().removeClass('d-none').fadeIn();
