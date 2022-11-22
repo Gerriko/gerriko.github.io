@@ -103,7 +103,6 @@ async function stopScan() {
 
 function getMapData() {
   if (geoLoc.length > 5 && placeID.length > 5) {
-    stopScan();
     window.open('https://www.google.com/maps/search/?api=1&'+geoLoc+'&'+placeID);
   }
 }
