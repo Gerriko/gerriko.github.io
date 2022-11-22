@@ -27,7 +27,11 @@ async function getGoogs() {
 	}
 	// read response stream as text
 	let text_data = await response.text();
-  console.log(text_data);
+	var textArr = text_data.split(',');
+	if (textArr.length == 2) {
+		trainLink = substring(textArr[0],3);
+		busLink = substring(textArr[1],3);
+	}
 }
 
 async function startScanning() {
@@ -135,4 +139,11 @@ function getMapData() {
   }
 }
 
+async function getTrainData() {
+	
+}
+
+async function getBusData() {
+	
+}
 
