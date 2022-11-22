@@ -2,8 +2,8 @@ let ndef;
 let AbortCtrlr;
 
 async function startScanning() {
-  let URLfind = false;
-  let TXTfind = false;
+  let URLfind;
+  let TXTfind;
   $('#arrivals_canvas').hide().removeClass('d-none').fadeIn();
   try {
     ndef = new NDEFReader();
@@ -40,11 +40,13 @@ async function startScanning() {
               $('#get_btn').hide().addClass('d-none');
               break;
             case "smart-poster":
+              URLfind = false;
+              TXTfind = false;
               for (const sprecord of record.toRecords()) {
                 const spData = decoder.decode(sprecord.data);
                 $('#arrivals_data').append(`<br/>- SP Type: ${sprecord.recordType} | Data: ${spData}`);
-                if (sprecord.recordType == "url" && spData.includes("geo:53") URLfind = true;
-                else if (sprecord.recordType == "text" && spData.includes("stop,") TXTfind = true;
+                if (sprecord.recordType == "url" && spData.includes("geo:53")) URLfind = true;
+                else if (sprecord.recordType == "text" && spData.includes("stop,")) TXTfind = true;
               }
               
               if (URLfind == true && TXTfind == true)
