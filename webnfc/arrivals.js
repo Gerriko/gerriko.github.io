@@ -32,6 +32,7 @@ async function startScanning() {
           $('#arrivals_data').append(`<br/>NDEF Data: (${decoder.decode(record.data)})`);
           $('#bus_btn').hide().addClass('d-none');
           $('#train_btn').hide().addClass('d-none');
+           $('#map_btn').hide().addClass('d-none');
           switch (record.recordType) {
             case "text":
               const textDecoder = new TextDecoder(record.encoding);
