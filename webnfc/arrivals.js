@@ -13,7 +13,7 @@ $(document).ready(async function() {
   else {
     $('#nfc-pass').hide().removeClass('d-none').fadeIn();
     try {
-	await getGoogs();
+			await getGoogs();
     }
     catch (error) {
       console.log("Argh fetch! " + error);
@@ -150,10 +150,14 @@ function getMapData() {
 async function getTrainData() {
 	if (trainLink.length > 32 && stnName.length > 1) {
 		const trainULS = "https://script.google.com/macros/s/" + trainLink + "/exec?station=" + stnName;
-		console.log(trainULS);
-		//$.get("https://script.google.com/macros/s/", function(data, status) {
-		//	alert("Data: " + data + "\nStatus: " + status);
-  	//});
+		$.get(trainULS, function(data, status) {
+			if(status != 200) {
+				console.log("Server Error");
+			}
+			else {
+				console.log("Train Data: " + data);
+			}
+		});
 	}
 }
 
