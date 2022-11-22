@@ -158,8 +158,8 @@ async function getTrainData() {
 		$.getJSON(trainULS, function(data, status) {
 			console.log("Status (" + status + ")");
 			var items = [];
-			$('#arrivals_header').text("Your Train Arrivals:");
-			$('#arrivals_data').text("For " + stnName + " station...");
+			$('#arrivals_header').text("Your " + stnName + " Train Arrivals:");
+			$('#arrivals_data').text("");
 			$.each( data, function( key, val ) {
 				console.log("key:" + key + " | val:" + val);
 				if (key == "T1" || key == "T2" || key == "T3" || key == "T4") {
