@@ -11,14 +11,16 @@ $(document).ready(function() {
   }
   else {
     $('#nfc-pass').hide().removeClass('d-none').fadeIn();
-    try getFile();
+    try {
+	await getGoogs();
+    }
     catch (error) {
       console.log("Argh fetch! " + error);
     }
   }
 });
 
-async function getFile() {
+async function getGoogs() {
 	let response = await fetch("googs.abc");
 	if(response.status != 200) {
 		throw new Error("Server Error");
@@ -27,7 +29,6 @@ async function getFile() {
 	let text_data = await response.text();
   console.log(text_data);
 }
-
 
 async function startScanning() {
   let URLfind;
