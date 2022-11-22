@@ -106,7 +106,7 @@
               <p class="lead">Real Time Passenger Information.</p>
               <a id="scan_btn" class="btn btn-lg btn-outline-light" onClick="startScanning()">Where's my transport?</a>
             </div>
-            <div id="arrivals_canvas" class="d-none bg-light shadow-sm mx-auto" style="width: 90%; height: auto; border-radius: 21px 21px 0 0;">
+            <div id="arrivals_canvas" class="d-none bg-light shadow-sm mx-auto" style="width: 94%; height: auto; border-radius: 18px 18px 0 0;">
               <div class="row align-items-start">
                 <div class="col col-md-12">
                   <div class="card" style="width: 100%;">
@@ -118,11 +118,14 @@
                 </div>
               </div>   
               <div class="row align-items-start">
-                <div id="bus_btn" class="d-none my-1 py-1">
+                <div id="bus_btn" class="d-none my-2 py-2">
                   <a class="btn btn-success" onClick="getBusData()">Get Bus Data...</a>
                 </div>
-                <div id="train_btn" class="d-none my-1 py-1">
+                <div id="train_btn" class="d-none my-2 py-2">
                   <a class="btn btn-primary" onClick="getTrainData()">Get Train Data...</a>
+                </div>
+                <div id="map_btn" class="d-none my-2 py-2">
+                  <a class="btn btn-secondary" onClick="getMapData()">Map of Location</a>
                 </div>
                 <div id="stop_btn" class="d-none my-2 py-2">
                   <a class="btn btn-danger" onClick="stopScan()">Stop Scanning</a>
@@ -137,7 +140,7 @@
             <p class="lead">Latest news about service.</p>
             <a class="btn btn-lg btn-outline-dark" href="#">Subscribe to RSS</a>
           </div>
-          <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: auto; border-radius: 21px 21px 0 0;">
+          <div class="bg-dark shadow-sm mx-auto" style="width: 94%; height: auto; border-radius: 18px 18px 0 0;">
           </div>
         </div>
       </div>
