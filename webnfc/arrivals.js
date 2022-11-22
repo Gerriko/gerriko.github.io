@@ -30,8 +30,8 @@ async function getGoogs() {
 	let text_data = await response.text();
 	var textArr = text_data.split(',');
 	if (textArr.length == 2) {
-		trainLink = substring(textArr[0],3);
-		busLink = substring(textArr[1],3);
+		trainLink = textArr[0].substring(3);
+		busLink = textArr[1].substring(3);
 	}
 }
 
