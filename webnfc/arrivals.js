@@ -38,11 +38,18 @@ async function startScanning() {
               $('#get_btn').hide().addClass('d-none');
               break;
             case "smart-poster":
+              var URLfind = false;
+              var TXTfind = false;
               for (const sprecord of record.toRecords()) {
-                $('#arrivals_data').append(`<br/>- SP Type: ${sprecord.recordType} | Data: ${decoder.decode(sprecord.data)}`);
+                const spData = decoder.decode(sprecord.data);
+                $('#arrivals_data').append(`<br/>- SP Type: ${sprecord.recordType} | Data: ${spData}`);
+                if (sprecord.recordType == "url" && spData.includes("geo:53") URLfind = true;
+                else if (sprecord.recordType == "text" && spData.includes("stop,") TXTfind = true;
               }
+              
+              if (URLfind == true && TXTfind == true)
+                $('#get_btn').hide().removeClass('d-none').fadeIn();                
                 
-              $('#get_btn').hide().removeClass('d-none').fadeIn();
               break;
             default:
           }
