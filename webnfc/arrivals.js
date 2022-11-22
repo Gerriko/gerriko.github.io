@@ -48,12 +48,15 @@ async function startScanning() {
     $('#scan_btn').text("NFC Scan Active...");
     $('#scan_btn').removeClass('btn-outline-light');
     $('#scan_btn').addClass('btn-warning disabled');
+		$('#arrivals_header').text("Waiting for tag data...");
 
     ndef.addEventListener("readingerror", () => {
+			$('#arrivals_header').text("Read Error:");
       $('#arrivals_data').text("Argh! Cannot read data from the NFC tag. Try another one?");
     });
 
     ndef.addEventListener("reading", ({ message, serialNumber }) => {
+			$('#arrivals_header').text("Your NFC Tag Data:");
       $('#arrivals_data').text(`Tag Serial Number: ${serialNumber}`);
       $('#arrivals_data').append(`<br/>NDEF Records: (${message.records.length})`);
       
@@ -151,12 +154,18 @@ async function getTrainData() {
 	await AbortCtrlr.abort();
 	if (trainLink.length > 32 && stnName.length > 1) {
 		const trainULS = "https://script.google.com/macros/s/" + trainLink + "/exec?station=" + stnName;
-		console.log(trainULS);
+		//console.log(trainULS);
 		$.getJSON(trainULS, function(data, status) {
-			console.log("Status: " + status + " | Train Data: " + data);
+			console.log("Status (" + status + ")");
 			var items = [];
+			$('#arrivals_header').text("Your Train Arrivals:");
+			$('#arrivals_data').text("At " + stnName + "station...");
 			$.each( data, function( key, val ) {
 				console.log("key:" + key + " | val:" + val);
+				if (key == "T1" || key == "T2" || key == "T3" || key == "T4") {
+					var textArr = val.split(',');
+					$('#arrivals_data').append(textArr[0] + " due in " + textArr[0] + "<br/>");
+				}
 			});
 		});
 	}
