@@ -5,7 +5,7 @@ async function startScanning() {
   let URLfind;
   let TXTfind;
   $('#arrivals_canvas').hide().removeClass('d-none').fadeIn();
-  $('html, body').animate({ scrollTop: $("#nfc-pass").offset().top }, 500);
+  $('html, body').animate({ scrollTop: $("#nfc-pass").offset().top }, 300);
   try {
     ndef = new NDEFReader();
     AbortCtrlr = new AbortController();
@@ -77,6 +77,7 @@ async function stopScan() {
   $('#scan_btn').removeClass('btn-warning disabled');
   $('#scan_btn').addClass('btn-outline-light');
   $('#scan_btn').text("Where's my bus?");
+  $('html, body').animate({ scrollTop: $("#bus-header").offset().top }, 500);
   
 }
 
