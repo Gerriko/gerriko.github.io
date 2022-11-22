@@ -2,6 +2,7 @@ let ndef;
 let AbortCtrlr;
 let geoLoc = "";
 let placeID = "";
+let stnName = "";
 let trainLink = "";
 let busLink = "";
 
@@ -87,8 +88,15 @@ async function startScanning() {
                   URLfind = true;
                 }
                 else if (sprecord.recordType == "text") {
-                  if (spData.includes(", stop")) TXTfind = 1;
-                  else if (spData.includes(", StationCode")) TXTfind = 2;
+                  if (spData.includes(", stop")) {
+										TXTfind = 1;
+									}
+                  else if (spData.includes(", StationCode")) {
+										const StnStart = spData.indexOf("ode=")+4;
+										const StnEnd = spData.indexOf(", Place");
+										stnName = spData.substring(StnStart, StnEnd);
+										TXTfind = 2;
+									}
                   if (spData.includes("ID: ")) {
                     const placeIDstart = spData.indexOf("ID: ")+4;
                     placeID = "query_place_id="+spData.substring(placeIDstart);
@@ -140,7 +148,13 @@ function getMapData() {
 }
 
 async function getTrainData() {
-	
+	if (trainLink.length > 32 && stnName.length > 1) {
+		const trainULS = "https://script.google.com/macros/s/" + trainLink + "/exec?station=" + stnName;
+		console.log(trainULS);
+		//$.get("https://script.google.com/macros/s/", function(data, status) {
+		//	alert("Data: " + data + "\nStatus: " + status);
+  	//});
+	}
 }
 
 async function getBusData() {
