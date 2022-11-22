@@ -159,12 +159,12 @@ async function getTrainData() {
 			console.log("Status (" + status + ")");
 			var items = [];
 			$('#arrivals_header').text("Your Train Arrivals:");
-			$('#arrivals_data').text("At " + stnName + "station...");
+			$('#arrivals_data').text("For " + stnName + " station...");
 			$.each( data, function( key, val ) {
 				console.log("key:" + key + " | val:" + val);
 				if (key == "T1" || key == "T2" || key == "T3" || key == "T4") {
-					var textArr = val.split(',');
-					$('#arrivals_data').append(textArr[0] + " due in " + textArr[0] + "<br/>");
+					//var textArr = val.split(',');
+					$('#arrivals_data').append(val + "<br/>");
 				}
 			});
 		});
