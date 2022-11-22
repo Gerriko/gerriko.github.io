@@ -163,8 +163,8 @@ async function getTrainData() {
 			$.each( data, function( key, val ) {
 				console.log("key:" + key + " | val:" + val);
 				if (key == "T1" || key == "T2" || key == "T3" || key == "T4") {
-					//var textArr = val.split(',');
-					$('#arrivals_data').append(val + "<br/>");
+					var textArr = val.toString().split(',');
+					$('#arrivals_data').append(key.toString() + ": "+ textArr[0] + " due in " + textArr[1] + "<br/>");
 				}
 			});
 		});
