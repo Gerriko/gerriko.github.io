@@ -47,9 +47,22 @@ async function startScanning() {
               for (const sprecord of record.toRecords()) {
                 const spData = decoder.decode(sprecord.data);
                 $('#arrivals_data').append(`<br/>- SP Type: ${sprecord.recordType} | Data: ${spData}`);
-                if (sprecord.recordType == "url" && spData.includes("geo:53.")) URLfind = true;
-                else if (sprecord.recordType == "text" && spData.includes(", stop")) TXTfind = 1;
-                else if (sprecord.recordType == "text" && spData.includes(", StationCode")) TXTfind = 2;
+                if (sprecord.recordType == "url" && spData.includes("geo:53.")) {
+                  const GEOlat = spData.indexOf("geo:")+4;
+                  const GEOlong = spData.indexOf(",");
+                  geoLoc = "query="+spData.substring(GEOlat, GEOlong)+"%2C"+spData.substring(GEOlong);
+                  console.log("geoLoc: "+geoLoc);
+                  URLfind = true;
+                }
+                else if (sprecord.recordType == "text") {
+                  if (spData.includes(", stop")) TXTfind = 1;
+                  else if (spData.includes(", StationCode")) TXTfind = 2;
+                  if (spData.includes("ID: ")) {
+                    const placeIDstart = spData.indexOf("ID: ")+4;
+                    placeID = "query_place_id="+spData.substring(placeIDstart);
+                    console.log("placeID: "+placeID);
+                  }
+                }
               }
               
               if (URLfind == true && TXTfind == 1) {
@@ -91,7 +104,7 @@ async function stopScan() {
 function getMapData() {
   if (geoLoc.length > 5 && placeID.length > 5) {
     stopScan();
-    window.open('https://www.google.com/maps/search/?api=1&'+geoLoc+placeID);
+    window.open('https://www.google.com/maps/search/?api=1&'+geoLoc+'&'+placeID);
   }
 }
 
