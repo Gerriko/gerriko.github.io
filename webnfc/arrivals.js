@@ -79,9 +79,8 @@ async function startScanning() {
               if (record.mediaType === "application/json") {
                 $('#arrivals_data').append(`<br/>Mime JSON: ${JSON.parse(decoder.decode(record.data))}`);
               } else {
-                const textDecoder = new TextDecoder();
-                $('#arrivals_data').append(`<br/>Text: ${textDecoder.decode(record.data)}`);
-                //console.log(`MIME Media not handled`);
+                //const textDecoder = new TextDecoder();
+                //$('#arrivals_data').append(`<br/>Text: ${textDecoder.decode(record.data)}`);
               }
               break;
             case "smart-poster":
