@@ -79,6 +79,7 @@ async function startScanning() {
 			  			if (record.mediaType === "application/json") {
 								$('#arrivals_data').append(`<br/>Mime JSON: ${JSON.parse(decoder.decode(record.data))})`);
       				} else {
+								$('#arrivals_data').append(`<br/>Text: ${textDecoder.decode(record.data)} (${record.lang})`);
         				console.log(`MIME Media not handled`);
       				}
               break;
