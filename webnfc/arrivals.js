@@ -76,6 +76,11 @@ async function startScanning() {
             case "url":
               break;
             case "mime":
+			  			if (record.mediaType === "application/json") {
+								$('#arrivals_data').append(`<br/>Mime JSON: ${JSON.parse(decoder.decode(record.data))})`);
+      				} else {
+        				console.log(`MIME Media not handled`);
+      				}
               break;
             case "smart-poster":
               URLfind = false;
