@@ -145,7 +145,7 @@ async function stopScan() {
   $('#arrivals_canvas').addClass('d-none').fadeOut();
   $('#scan_btn').removeClass('btn-warning disabled');
   $('#scan_btn').addClass('btn-outline-light');
-  $('#scan_btn').text("Where's my bus?");
+  $('#scan_btn').text("Where's my transport?");
   $('html, body').animate({ scrollTop: $("#bus-header").offset().top }, 500);
   
 }
