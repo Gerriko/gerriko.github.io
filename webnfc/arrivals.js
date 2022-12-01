@@ -3,6 +3,7 @@ let AbortCtrlr;
 let geoLoc = "";
 let placeID = "";
 let stnName = "";
+let stopName = "";
 let trainLink = "";
 let busLink = "";
 
@@ -178,6 +179,23 @@ async function getTrainData() {
 }
 
 async function getBusData() {
-	
+	await AbortCtrlr.abort();
+	if (busLink.length > 32 && stopName.length > 1) {
+		const busULS = "https://script.google.com/macros/s/" + busLink + "/exec?station=" + stopName;
+		//console.log(trainULS);
+		$.getJSON(busULS, function(data, status) {
+			console.log("Status (" + status + ")");
+			var items = [];
+			$('#arrivals_header').text("Your " + stopName + " Bus Arrivals:");
+			$('#arrivals_data').text("");
+			$.each( data, function( key, val ) {
+				console.log("key:" + key + " | val:" + val);
+				if (key == "B1" || key == "B2" || key == "B3" || key == "B4") {
+					var textArr = val.toString().split(',');
+					$('#arrivals_data').append(key.toString() + ": "+ textArr[0] + " due in " + textArr[1] + "<br/>");
+				}
+			});
+		});
+	}
 }
 
