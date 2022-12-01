@@ -3,7 +3,6 @@ let AbortCtrlr;
 let geoLoc = "";
 let placeID = "";
 let stnName = "";
-let stopName = "";
 let trainLink = "";
 let busLink = "";
 
@@ -180,13 +179,13 @@ async function getTrainData() {
 
 async function getBusData() {
 	await AbortCtrlr.abort();
-	if (busLink.length > 32 && stopName.length > 1) {
-		const busULS = "https://script.google.com/macros/s/" + busLink + "/exec?station=" + stopName;
+	if (busLink.length > 32 && stnName.length > 1) {
+		const busULS = "https://script.google.com/macros/s/" + busLink + "/exec?station=" + stnName;
 		//console.log(trainULS);
 		$.getJSON(busULS, function(data, status) {
 			console.log("Status (" + status + ")");
 			var items = [];
-			$('#arrivals_header').text("Your " + stopName + " Bus Arrivals:");
+			$('#arrivals_header').text("Your " + stnName + " Bus Arrivals:");
 			$('#arrivals_data').text("");
 			$.each( data, function( key, val ) {
 				console.log("key:" + key + " | val:" + val);
