@@ -1,0 +1,46 @@
+<!doctype html>
+<head>
+<title>WebView Javascript Processor</title>
+</head>
+
+<body onload="processJavascript();">
+<b>This page includes a javascript function that reads NFC cards.</b>
+<p>The javascript function incorporates a special App Inventor feature called <i>window.AppInventor.getWebViewString()</i>, which allows App Inventor apps to communicate with the WebViewer component's internal processing of javascript.
+<p>This simple example shows how to use the <i>window.AppInventor.getWebViewString()</i> function to pass data to and from the WebViewer component, and thereby an App Inventor app.
+
+<script>
+  function processJavascript() {
+
+    if (!("NDEFReader" in window)) {
+      document.write( "<p>WebView does not accept NFC</p>" );
+      window.AppInventor.setWebViewString( "WebView does not accept NFC" );
+    }
+    else {
+      document.write( "<p>WebView accepts NFC</p>" );
+      window.AppInventor.setWebViewString( "WebView accepts NFC: " );
+
+      let btn = document.createElement("button");
+      btn.innerHTML = " Scan NFC ";
+      btn.onclick = function () {
+        const ndef = new NDEFReader();
+        ndef.scan().then(() => {
+          window.AppInventor.setWebViewString("Scan started successfully.");
+          ndef.onreadingerror = (event) => {
+            window.AppInventor.setWebViewString("Error! Cannot read data from the NFC tag. Try a different one?");
+          };
+          ndef.onreading = (event) => {
+            window.AppInventor.setWebViewString("NDEF message read.");
+          };
+        }).catch((error) => {
+          window.AppInventor.setWebViewString(`Error! Scan failed to start: ${error}.`);
+        });
+
+      };
+      document.write( "<p></p>" );
+      document.body.appendChild(btn);
+    }      
+  }
+</script>
+
+</body>
+</html>
