@@ -177,7 +177,7 @@ async function getTrainData() {
 					$('#arrivals_data').append(key.toString() + ": "+ textArr[0] + " due in " + textArr[1] + "<br/>");
 				}
 			});
-			$('#arrivals_data').append("Click \"Get Train Data\" to update.<br/>");
+			$('#arrivals_data').append("<br/>Click \"Get Train Data...\" to update.<br/>");
 		});
 	}
 }
@@ -208,6 +208,7 @@ async function getBusData() {
 					}
 				}
 			});
+			$('#arrivals_data').append("<br/>Click \"Get Bus Data...\" to update.<br/>");
 		});
 	}
 }
