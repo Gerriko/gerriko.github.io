@@ -103,6 +103,9 @@ async function startScanning() {
                 }
                 else if (sprecord.recordType == "text") {
                   if (spData.includes(", stop")) {
+										const StnStart = spData.indexOf(", stop")+2;
+										const StnEnd = spData.indexOf(", Place");
+										stnName = spData.substring(StnStart, StnEnd);
 										TXTfind = 1;
 									}
                   else if (spData.includes(", StationCode")) {
