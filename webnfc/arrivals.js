@@ -48,6 +48,10 @@ async function startScanning() {
     $('#scan_btn').text("NFC Scan Active...");
     $('#scan_btn').removeClass('btn-outline-light');
     $('#scan_btn').addClass('btn-warning disabled');
+		$('#bus_btn').hide().addClass('d-none');
+		$('#train_btn').hide().addClass('d-none');
+		$('#map_btn').hide().addClass('d-none');
+		$('#stop_btn').hide().addClass('d-none');
 		$('#arrivals_header').text("Waiting for tag data...");
 		$('#arrivals_data').text("");
 
