@@ -158,6 +158,10 @@ function getMapData() {
 
 async function getTrainData() {
 	await AbortCtrlr.abort();
+  $('#scan_btn').removeClass('btn-warning disabled');
+  $('#scan_btn').addClass('btn-outline-light');
+  $('#scan_btn').text("Where's my transport?");
+	$('#stop_btn').hide().addClass('d-none');
 	if (trainLink.length > 32 && stnName.length > 1) {
 		const trainULS = "https://script.google.com/macros/s/" + trainLink + "/exec?station=" + stnName;
 		//console.log(trainULS);
@@ -173,12 +177,17 @@ async function getTrainData() {
 					$('#arrivals_data').append(key.toString() + ": "+ textArr[0] + " due in " + textArr[1] + "<br/>");
 				}
 			});
+			$('#arrivals_data').append("Click \"Get Train Data\" to update.<br/>");
 		});
 	}
 }
 
 async function getBusData() {
 	await AbortCtrlr.abort();
+  $('#scan_btn').removeClass('btn-warning disabled');
+  $('#scan_btn').addClass('btn-outline-light');
+  $('#scan_btn').text("Where's my transport?");
+	$('#stop_btn').hide().addClass('d-none');
 	if (busLink.length > 32 && stnName.length > 1) {
 		const busULS = "https://script.google.com/macros/s/" + busLink + "/exec?station=" + stnName;
 		//console.log(trainULS);
@@ -191,7 +200,12 @@ async function getBusData() {
 				console.log("key:" + key + " | val:" + val);
 				if (key == "B1" || key == "B2" || key == "B3" || key == "B4") {
 					var textArr = val.toString().split(',');
-					$('#arrivals_data').append(key.toString() + ": "+ textArr[0] + " due in " + textArr[1] + "<br/>");
+					if(textArr[0].length > 5 && textArr[1].includes("-") == false) {
+						$('#arrivals_data').append(key.toString() + ": "+ textArr[0] + " due in " + textArr[1] + "<br/>");
+					}
+					else {
+						$('#arrivals_data').append(key.toString() + ": n/a<br/>");
+					}
 				}
 			});
 		});
