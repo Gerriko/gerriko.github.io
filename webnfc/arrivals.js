@@ -49,6 +49,7 @@ async function startScanning() {
     $('#scan_btn').removeClass('btn-outline-light');
     $('#scan_btn').addClass('btn-warning disabled');
 		$('#arrivals_header').text("Waiting for tag data...");
+		$('#arrivals_data').text("");
 
     ndef.addEventListener("readingerror", () => {
 			$('#arrivals_header').text("Read Error:");
