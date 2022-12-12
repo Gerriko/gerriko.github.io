@@ -208,8 +208,11 @@ async function getBusData() {
 				console.log("key:" + key + " | val:" + val);
 				if (key == "B1" || key == "B2" || key == "B3" || key == "B4") {
 					var textArr = val.toString().split(',');
-					if(textArr[0].length > 5 && textArr[1].includes("-") == false) {
-						$('#arrivals_data').append(key.toString() + ": "+ textArr[0] + " due in " + textArr[1] + "<br/>");
+					if(textArr[1].length > 3) {
+						if (textArr[1].includes("Now") == false)
+							$('#arrivals_data').append(key.toString() + ": "+ textArr[0] + " due in " + textArr[1] + "<br/>");
+						else
+							$('#arrivals_data').append(key.toString() + ": "+ textArr[0] + " " + textArr[1] + "<br/>");
 					}
 					else {
 						$('#arrivals_data').append(key.toString() + ": n/a<br/>");
