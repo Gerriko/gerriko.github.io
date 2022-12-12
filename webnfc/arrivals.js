@@ -210,9 +210,9 @@ async function getBusData() {
 					var textArr = val.toString().split(',');
 					if(textArr[1].length > 3) {
 						if (textArr[1].includes("Now") == false)
-							$('#arrivals_data').append(key.toString() + ": "+ textArr[0] + " due in " + textArr[1] + "<br/>");
+							$('#arrivals_data').append(key.toString() + ": No."+ textArr[0] + " due in " + textArr[1] + "<br/>");
 						else
-							$('#arrivals_data').append(key.toString() + ": "+ textArr[0] + " " + textArr[1] + "<br/>");
+							$('#arrivals_data').append(key.toString() + ": No."+ textArr[0] + " " + textArr[1] + "<br/>");
 					}
 					else {
 						$('#arrivals_data').append(key.toString() + ": n/a<br/>");
